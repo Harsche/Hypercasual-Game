@@ -1,15 +1,28 @@
+using System.Collections;
 using UnityEngine;
 using Lean.Touch;
 
 public class Shooter : MonoBehaviour
 {
-    [SerializeField] private RectTransform canvas;
-    [SerializeField] private GameObject bullet;
-    [SerializeField] private float initialDelay;
-    [SerializeField] private float frequency;
-    [SerializeField] private float bulletSpeed;
-    private bool shooting;
-    private float lastShot;
+    [SerializeField] private float shootFrequency;
+    [SerializeField] private float projectileSpeed;
+    [SerializeField] private GameObject redBall;
+    [SerializeField] private GameObject greenBall;
+    [SerializeField] private GameObject blueBall;
+    [SerializeField] private GameObject shooterParticles;
+    private Coroutine shooting;
+    private Transform myTransform;
+
+    private void Awake()
+    {
+        myTransform = transform;
+        shootFrequency = 1 / shootFrequency;
+    }
+
+    private void Start()
+    {
+        shooterParticles.GetComponent<ParticleSystem>().Stop();
+    }
 
     public void Shoot(LeanFinger finger)
     {
@@ -17,23 +30,25 @@ public class Shooter : MonoBehaviour
         {
             if (finger.Down)
             {
-                lastShot = Time.time - frequency + initialDelay;
-                shooting = true;
+                shooterParticles.GetComponent<ParticleSystem>().Play();
+                shooting = StartCoroutine(ShootProjectile(redBall));
             }
-
-            if (finger.Up)
+            else if (finger.Up & shooting != null)
             {
-                shooting = false;
+                shooterParticles.GetComponent<ParticleSystem>().Stop();
+                StopCoroutine(shooting);
             }
+        }
 
-            if (shooting && Time.time >= lastShot + frequency)
-            {
-                GameObject obj = Instantiate(bullet);
-                obj.transform.SetParent(canvas);
-                obj.transform.position = transform.position;
-                obj.GetComponent<Rigidbody2D>().velocity = new Vector2(0, bulletSpeed);
-                lastShot = Time.time;
-            }
+    }
+
+    IEnumerator ShootProjectile(GameObject projectile)
+    {
+        while (true)
+        {
+            GameObject projObj = Instantiate(projectile, myTransform.position, Quaternion.identity);
+            projObj.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, projectileSpeed);
+            yield return new WaitForSeconds(shootFrequency);
         }
     }
 }
