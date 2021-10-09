@@ -8,11 +8,14 @@ public class Movement : MonoBehaviour
     [SerializeField] private float characterSpeed;
     [SerializeField] private float deadzone;
     [SerializeField] private float joystickSize;
+    [SerializeField] private float tapThreshold;
     [SerializeField] private GameObject joystick;
     [SerializeField] private GameObject joystickZone;
-
     [SerializeField] private GameObject canvasJoystick;
+    private bool showJosytick;
+
     public bool canMove = true;
+    private float downTime;
     private SpriteRenderer spriteRenderer;
     private Animator anim;
     private GameObject circleCenter;
@@ -59,20 +62,26 @@ public class Movement : MonoBehaviour
             {
                 if (finger.Down)
                 {
+                    downTime = Time.time;
                     circleCenter.transform.position = finger.StartScreenPosition;
                 }
 
-                circleDirection.transform.position = finger.StartScreenPosition + Vector2.ClampMagnitude(direction, joystickSize);
-                canvasJoystick.SetActive(true);
+                if (Time.time - downTime > tapThreshold || finger.ScreenPosition != finger.StartScreenPosition)
+                {
+                    circleDirection.transform.position = finger.StartScreenPosition + Vector2.ClampMagnitude(direction, joystickSize);
+                    canvasJoystick.SetActive(true);
 
-                if (direction.magnitude > deadzone)
-                {
-                    myRb2d.velocity = Vector2.ClampMagnitude(direction, 1) * characterSpeed;
+                    if (direction.magnitude > deadzone)
+                    {
+                        myRb2d.velocity = Vector2.ClampMagnitude(direction, 1) * characterSpeed;
+                    }
+                    else
+                    {
+                        myRb2d.velocity = Vector2.zero;
+                    }
                 }
-                else
-                {
-                    myRb2d.velocity = Vector2.zero;
-                }
+
+
             }
             else
             {

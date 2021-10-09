@@ -9,7 +9,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private GameObject enemy;
     Coroutine spawnerCoroutine;
 
-    void Awake()
+    void Start()
     {
         spawnerCoroutine = StartCoroutine(SpawnNewEnemy());
     }

@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class Enemy1 : MonoBehaviour
 {
+    [SerializeField] private int damage;
     [SerializeField] private Vector2 min;
     [SerializeField] private Vector2 max;
     [SerializeField] private float speed;
@@ -21,6 +22,15 @@ public class Enemy1 : MonoBehaviour
 
             Tween path = transform.DOPath(v3path, duration, PathType.CatmullRom, PathMode.TopDown2D).OnComplete(() => { Destroy(gameObject); });
             path.SetLink(gameObject);
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            other.gameObject.GetComponent<Player>().Damage(damage);
+            Destroy(gameObject);
         }
     }
 

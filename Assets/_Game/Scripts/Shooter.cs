@@ -6,10 +6,11 @@ public class Shooter : MonoBehaviour
 {
     [SerializeField] private float shootFrequency;
     [SerializeField] private float projectileSpeed;
+    [SerializeField] private float tapThreshold;
     [SerializeField] private GameObject redBall;
     [SerializeField] private GameObject greenBall;
     [SerializeField] private GameObject blueBall;
-    [SerializeField] private GameObject shooterParticles;
+    [SerializeField] private ParticleSystem shooterParticles;
     private Coroutine shooting;
     private Transform myTransform;
 
@@ -21,7 +22,7 @@ public class Shooter : MonoBehaviour
 
     private void Start()
     {
-        shooterParticles.GetComponent<ParticleSystem>().Stop();
+        shooterParticles.Stop();
     }
 
     public void Shoot(LeanFinger finger)
@@ -30,22 +31,27 @@ public class Shooter : MonoBehaviour
         {
             if (finger.Down)
             {
-                shooterParticles.GetComponent<ParticleSystem>().Play();
-                shooting = StartCoroutine(ShootProjectile(redBall));
+                shooting = StartCoroutine(ShootProjectile(redBall, finger));
             }
             else if (finger.Up & shooting != null)
             {
-                shooterParticles.GetComponent<ParticleSystem>().Stop();
+                shooterParticles.Stop();
                 StopCoroutine(shooting);
             }
         }
 
     }
 
-    IEnumerator ShootProjectile(GameObject projectile)
+    IEnumerator ShootProjectile(GameObject projectile, LeanFinger finger)
     {
+        yield return new WaitForSeconds(tapThreshold);
         while (true)
         {
+            if (!shooterParticles.isPlaying)
+            {
+                shooterParticles.Play();
+            }
+
             GameObject projObj = Instantiate(projectile, myTransform.position, Quaternion.identity);
             projObj.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, projectileSpeed);
             yield return new WaitForSeconds(shootFrequency);

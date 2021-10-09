@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5749653139576914060}
   - component: {fileID: 8448321204304824758}
   - component: {fileID: 5880078365957365419}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Red Magic Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
