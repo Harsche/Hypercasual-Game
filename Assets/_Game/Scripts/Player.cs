@@ -6,6 +6,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private int playerHealth;
     [SerializeField] private int startHealth;
+    [SerializeField] private int maxHealth;
+
     [SerializeField] private HealthUI healthUI;
     [SerializeField] private GameObject gameOver;
 
@@ -18,6 +20,7 @@ public class Player : MonoBehaviour
     public void Heal(int num)
     {
         playerHealth += num;
+        playerHealth = Mathf.Clamp(playerHealth, 0, maxHealth);
         healthUI.ChangeLife(playerHealth);
     }
 
@@ -37,3 +40,4 @@ public class Player : MonoBehaviour
 
     }
 }
+ 

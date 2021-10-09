@@ -130,6 +130,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 5
   scorePoints: 40
+  gaugePoints: 3
 --- !u!114 &1105235631757785127
 MonoBehaviour:
   m_ObjectHideFlags: 0

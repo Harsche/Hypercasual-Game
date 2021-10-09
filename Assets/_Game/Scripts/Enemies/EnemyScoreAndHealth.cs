@@ -1,11 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyScoreAndHealth : MonoBehaviour
 {
     [SerializeField] private int health;
     [SerializeField] private int scorePoints;
+    [SerializeField] private int gaugePoints;
 
     public void ChangeHealth(int damage)
     {
@@ -14,6 +13,7 @@ public class EnemyScoreAndHealth : MonoBehaviour
         if (health <= 0)
         {
             Globals.Score.ChangeScore(scorePoints);
+            Globals.HealthGauge.ChangeGaugeValue(gaugePoints);
             Destroy(gameObject);
         }
     }

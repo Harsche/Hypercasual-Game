@@ -141,3 +141,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 2
   scorePoints: 10
+  gaugePoints: 1
