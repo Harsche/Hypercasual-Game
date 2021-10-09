@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
@@ -14,5 +15,9 @@ public class GameOver : MonoBehaviour
         {
             go.SetActive(false);
         }
+    }
+
+    public void ReloadScene(){
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
