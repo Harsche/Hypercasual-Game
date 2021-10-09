@@ -23,7 +23,7 @@ public class Score : MonoBehaviour
     void Start()
     {
         myRectTransform = GetComponent<RectTransform>();
-        scorePosition += new Vector2(0, transform.parent.GetComponent<RectTransform>().rect.height / 2);
+        scorePosition += new Vector2(+transform.parent.GetComponent<RectTransform>().rect.width / 2, transform.parent.GetComponent<RectTransform>().rect.height / 2);
         myRectTransform.DOLocalMove(scorePosition, moveDuration);
     }
 

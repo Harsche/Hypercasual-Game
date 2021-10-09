@@ -6,7 +6,8 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField] private float startDelay;
     [SerializeField] private Vector2 spawnDeltaTime;
-    [SerializeField] private GameObject enemy;
+    [SerializeField] private GameObject[] enemies;
+    [SerializeField] private float[] spawnDelayMultiplier;
     Coroutine spawnerCoroutine;
 
     void Start()
@@ -21,8 +22,11 @@ public class EnemySpawner : MonoBehaviour
 
         while (true)
         {
-            yield return new WaitForSeconds(Random.Range(spawnDeltaTime.x, spawnDeltaTime.y));
-            Instantiate(enemy, transform.position, Quaternion.identity);
+            int enemy = Random.Range(0, enemies.Length);
+
+            float spawnDelay = Random.Range(spawnDeltaTime.x, spawnDeltaTime.y) * spawnDelayMultiplier[enemy];
+            yield return new WaitForSeconds(spawnDelay);
+            Instantiate(enemies[enemy], transform.position, Quaternion.identity);
         }
     }
 }
