@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyProjectile : MonoBehaviour
@@ -23,6 +21,7 @@ public class EnemyProjectile : MonoBehaviour
         if(other.CompareTag("Player"))
         {
             other.GetComponent<Player>().Damage(damage);
+            Destroy(gameObject);
         }
     }
 }
