@@ -26,6 +26,7 @@ public class HealthGauge : MonoBehaviour
         gaugeSlider.value += num;
         if(gaugeSlider.value >= gaugeSlider.maxValue)
         {
+            gaugeSlider.value = 0;
             Globals.Player.Heal(healValue);
         }
     }

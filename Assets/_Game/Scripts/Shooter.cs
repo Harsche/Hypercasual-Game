@@ -27,7 +27,7 @@ public class Shooter : MonoBehaviour
 
     public void Shoot(LeanFinger finger)
     {
-        if (gameObject.activeSelf)
+        if (gameObject.activeSelf && finger.Index == 0)
         {
             if (finger.Down)
             {

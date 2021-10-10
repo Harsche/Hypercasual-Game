@@ -54,7 +54,7 @@ public class Movement : MonoBehaviour
 
     public void Move(LeanFinger finger)
     {
-        if (enabled)
+        if (enabled && finger.Index == 0)
         {
             Vector2 direction = finger.ScreenPosition - finger.StartScreenPosition;
 
