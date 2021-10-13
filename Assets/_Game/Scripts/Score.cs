@@ -39,6 +39,11 @@ public class Score : MonoBehaviour
         }
     }
 
+    public void CinemachineShake()
+    {
+        
+    }
+
     public void SetGameOver()
     {
         gameOver = true;
