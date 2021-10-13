@@ -11,6 +11,7 @@ public class Score : MonoBehaviour
     [SerializeField] private float shakeStrength;
     [SerializeField] private int shakeVibrato;
     [SerializeField] private float shakeRandomness;
+    private bool gameOver;
     private Text scoreText;
     private RectTransform myRectTransform;
 
@@ -18,6 +19,7 @@ public class Score : MonoBehaviour
     {
         scoreText = GetComponent<Text>();
         score = 0;
+        gameOver = false;
     }
 
     void Start()
@@ -27,10 +29,18 @@ public class Score : MonoBehaviour
         myRectTransform.DOLocalMove(scorePosition, moveDuration);
     }
 
-    public  void ChangeScore(int num)
+    public void ChangeScore(int num)
     {
-        score += num;
-        scoreText.text = score.ToString();
-        myRectTransform.DOShakePosition(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness, false, true);
+        if (!gameOver)
+        {
+            score += num;
+            scoreText.text = score.ToString();
+            myRectTransform.DOShakePosition(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness, false, true);
+        }
+    }
+
+    public void SetGameOver()
+    {
+        gameOver = true;
     }
 }

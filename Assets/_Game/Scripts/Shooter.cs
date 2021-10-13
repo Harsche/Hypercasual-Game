@@ -35,11 +35,16 @@ public class Shooter : MonoBehaviour
             }
             else if (finger.Up & shooting != null)
             {
-                shooterParticles.Stop();
-                StopCoroutine(shooting);
+                StopShooting();
             }
         }
 
+    }
+
+    public void StopShooting()
+    {
+        shooterParticles.Stop();
+        StopCoroutine(shooting);
     }
 
     IEnumerator ShootProjectile(GameObject projectile, LeanFinger finger)

@@ -1,42 +1,24 @@
 using UnityEngine;
-using UnityEngine.UI;
 using Lean.Touch;
 
 public class Movement : MonoBehaviour
 {
 
     [SerializeField] private float characterSpeed;
-    [SerializeField] private float deadzone;
-    [SerializeField] private float joystickSize;
     [SerializeField] private float tapThreshold;
-    [SerializeField] private GameObject joystick;
-    [SerializeField] private GameObject joystickZone;
-    [SerializeField] private GameObject canvasJoystick;
-    private bool showJosytick;
-
+    private Camera mainCamera;
     public bool canMove = true;
-    private float downTime;
+    private Transform myTransform;
     private SpriteRenderer spriteRenderer;
     private Animator anim;
-    private GameObject circleCenter;
-    private GameObject circleDirection;
     private Rigidbody2D myRb2d;
 
     private void Awake()
     {
-        spriteRenderer = GetComponent<SpriteRenderer>();
+        mainCamera = Globals.MainCamera.GetComponent<Camera>();
+        myTransform = transform;
         myRb2d = GetComponent<Rigidbody2D>();
-        circleCenter = Instantiate(joystickZone);
-        circleCenter.name = "Center";
-        circleDirection = Instantiate(joystick);
-        circleDirection.name = "Direction";
-        circleCenter.transform.SetParent(canvasJoystick.transform.GetChild(0));
-        circleDirection.transform.SetParent(canvasJoystick.transform.GetChild(0));
-        canvasJoystick.SetActive(false);
         //anim = GetComponent<Animator>();
-
-        circleCenter.GetComponent<Image>().color *= new Color(1.0f, 1.0f, 1.0f, 0.25f);
-
     }
 
     /*    private void FixedUpdate()
@@ -56,38 +38,32 @@ public class Movement : MonoBehaviour
     {
         if (enabled && finger.Index == 0)
         {
-            Vector2 direction = finger.ScreenPosition - finger.StartScreenPosition;
-
             if (!finger.Up && canMove)
             {
-                if (finger.Down)
+                Vector2 screenPos = finger.ScreenPosition;
+
+                screenPos = RemapScreenPosition(screenPos);
+                Vector3 toWorldPos = new Vector3(screenPos.x, screenPos.y, 10f);
+                Vector2 direction = mainCamera.ScreenToWorldPoint(toWorldPos) - myTransform.position;
+
+                if (direction.magnitude < 0.05)
                 {
-                    downTime = Time.time;
-                    circleCenter.transform.position = finger.StartScreenPosition;
+                    direction = Vector2.zero;
                 }
-
-                if (Time.time - downTime > tapThreshold || finger.ScreenPosition != finger.StartScreenPosition)
-                {
-                    circleDirection.transform.position = finger.StartScreenPosition + Vector2.ClampMagnitude(direction, joystickSize);
-                    canvasJoystick.SetActive(true);
-
-                    if (direction.magnitude > deadzone)
-                    {
-                        myRb2d.velocity = Vector2.ClampMagnitude(direction, 1) * characterSpeed;
-                    }
-                    else
-                    {
-                        myRb2d.velocity = Vector2.zero;
-                    }
-                }
-
-
+                
+                myRb2d.velocity = direction * characterSpeed;
             }
             else
             {
                 myRb2d.velocity = Vector2.zero;
-                canvasJoystick.SetActive(false);
             }
         }
+    }
+
+    private Vector2 RemapScreenPosition(Vector2 position)
+    {
+        float x = (position.x / Screen.width) * mainCamera.pixelWidth;
+        float y = (position.y / Screen.height) * mainCamera.pixelHeight;
+        return new Vector2(x, y);
     }
 }

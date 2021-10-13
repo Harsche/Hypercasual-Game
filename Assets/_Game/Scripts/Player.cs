@@ -1,9 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] bool invincible;
     [SerializeField] private int playerHealth;
     [SerializeField] private int startHealth;
     [SerializeField] private int maxHealth;
@@ -26,12 +25,17 @@ public class Player : MonoBehaviour
 
     public void Damage(int num)
     {
-        playerHealth -= num;
+        if (!invincible)
+        {
+            playerHealth -= num;
+        }
 
         if (playerHealth <= 0)
         {
             healthUI.ChangeLife(0);
             gameOver.SetActive(true);
+            GetComponent<Movement>().canMove = false;
+            transform.GetChild(0).gameObject.GetComponent<Shooter>().StopShooting();
         }
         else
         {
@@ -40,4 +44,3 @@ public class Player : MonoBehaviour
 
     }
 }
- 

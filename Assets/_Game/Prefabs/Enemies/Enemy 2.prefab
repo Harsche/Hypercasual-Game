@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2327020624539541637}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.72, z: 0}
+  m_LocalPosition: {x: 0, y: -0.486, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3871734956888727156}
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 3871734956888727157}
   - component: {fileID: 3871734956888727158}
   - component: {fileID: 1105235631757785127}
-  - component: {fileID: 7039192073196276593}
+  - component: {fileID: 2502999707581102210}
   m_Layer: 6
   m_Name: Enemy 2
   m_TagString: Enemy
@@ -59,7 +59,7 @@ Transform:
   m_GameObject: {fileID: 3871734956888727159}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.46, y: 7.21, z: 0}
-  m_LocalScale: {x: 0.69172, y: 0.69172, z: 0.69172}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8497463116292228340}
   m_Father: {fileID: 0}
@@ -105,12 +105,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 96445587b5551b74cb80c09e2d01e558, type: 3}
-  m_Color: {r: 0.0123848915, g: 0, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: f74a913dfaf04a54b9a371d5e44f9a9f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -131,6 +131,8 @@ MonoBehaviour:
   health: 5
   scorePoints: 40
   gaugePoints: 3
+  hitMaterial: {fileID: 2100000, guid: 564e837b79c309546b9ba5ecc628277f, type: 2}
+  hitTime: 0.1
 --- !u!114 &1105235631757785127
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,8 +152,8 @@ MonoBehaviour:
   shootTime: 3
   shootAngle: 60
   projectile: {fileID: 1718814713235216530, guid: f0071b1d54347ec47b9c3cd571fd66a0, type: 3}
---- !u!61 &7039192073196276593
-BoxCollider2D:
+--- !u!60 &2502999707581102210
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -168,11 +170,17 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 0.32, y: 0.32}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.4807518, y: 0.14381975}
+      - {x: 0.50901955, y: 0.50110465}
+      - {x: -0.51454264, y: 0.49515247}
+      - {x: -0.47946787, y: 0.11306304}
+      - {x: -0.35457355, y: -0.0027750134}
+      - {x: 0.0009854436, y: -0.52423775}
+      - {x: 0.28609765, y: -0.020092666}

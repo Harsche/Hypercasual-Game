@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class EnemyProjectile : MonoBehaviour
+public class Enemy2Projectile : MonoBehaviour
 {
     [SerializeField] private int damage;
     [SerializeField] private float speed;

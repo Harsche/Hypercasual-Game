@@ -1,12 +1,15 @@
+using System.Collections;
 using UnityEngine;
 using DG.Tweening;
 
 public class Enemy1 : MonoBehaviour
 {
     [SerializeField] private int damage;
+    [SerializeField] private GameObject projectile;
     [SerializeField] private Vector2 min;
     [SerializeField] private Vector2 max;
     [SerializeField] private float speed;
+
 
     void Start()
     {
@@ -20,6 +23,8 @@ public class Enemy1 : MonoBehaviour
 
             Tween path = transform.DOPath(v3path, duration, PathType.CatmullRom, PathMode.TopDown2D).OnComplete(() => { Destroy(gameObject); });
             path.SetLink(gameObject);
+            path.SetEase(Ease.Linear);
+            StartCoroutine(Shoot(duration));
         }
     }
 
@@ -30,6 +35,12 @@ public class Enemy1 : MonoBehaviour
             other.gameObject.GetComponent<Player>().Damage(damage);
             Destroy(gameObject);
         }
+    }
+
+    IEnumerator Shoot(float duration)
+    {
+        yield return new WaitForSeconds(duration/2);
+        Instantiate(projectile, transform.GetChild(0).position, Quaternion.identity);
     }
 
     private Vector2 RandomPosition()
