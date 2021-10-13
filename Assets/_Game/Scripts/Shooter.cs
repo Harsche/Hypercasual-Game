@@ -56,8 +56,8 @@ public class Shooter : MonoBehaviour
             {
                 shooterParticles.Play();
             }
-
-            GameObject projObj = Instantiate(projectile, myTransform.position, Quaternion.identity);
+            
+            GameObject projObj = PoolManager.SpawnObject(projectile, myTransform.position, Quaternion.identity);
             projObj.GetComponent<Rigidbody2D>().velocity = new Vector2(0f, projectileSpeed);
             yield return new WaitForSeconds(shootFrequency);
         }

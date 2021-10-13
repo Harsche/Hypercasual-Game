@@ -1,6 +1,8 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using Cinemachine;
 
 public class Score : MonoBehaviour
 {
@@ -11,12 +13,18 @@ public class Score : MonoBehaviour
     [SerializeField] private float shakeStrength;
     [SerializeField] private int shakeVibrato;
     [SerializeField] private float shakeRandomness;
+    [SerializeField] CinemachineVirtualCamera cinemachineVirtualCamera;
+    [SerializeField] float camShakeAmplitude;
+    [SerializeField] float camShakeDuration;
+    private CinemachineBasicMultiChannelPerlin shake;
     private bool gameOver;
     private Text scoreText;
     private RectTransform myRectTransform;
 
     void Awake()
     {
+        shake = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        shake.m_AmplitudeGain = 0f;
         scoreText = GetComponent<Text>();
         score = 0;
         gameOver = false;
@@ -31,17 +39,25 @@ public class Score : MonoBehaviour
 
     public void ChangeScore(int num)
     {
+        Coroutine shakeCoroutine;
+
         if (!gameOver)
         {
             score += num;
             scoreText.text = score.ToString();
             myRectTransform.DOShakePosition(shakeDuration, shakeStrength, shakeVibrato, shakeRandomness, false, true);
+            shake.m_AmplitudeGain = camShakeAmplitude;
+            shakeCoroutine = StartCoroutine(CinemachineShake());
         }
     }
 
-    public void CinemachineShake()
+    public IEnumerator CinemachineShake()
     {
-        
+        for(float t = 0; t < 1f; t+=0.1f)
+        {
+            shake.m_AmplitudeGain = Mathf.Lerp(camShakeAmplitude, 0f, t);
+            yield return new WaitForSeconds(0.1f);
+        }
     }
 
     public void SetGameOver()

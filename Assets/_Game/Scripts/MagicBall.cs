@@ -10,7 +10,7 @@ public class MagicBall : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             other.gameObject.GetComponent<EnemyScoreAndHealth>().ChangeHealth(damage);
-            Destroy(gameObject);
+            PoolManager.ReleaseObject(gameObject);
         }
     }
 }

@@ -8,6 +8,7 @@ public class EnemyScoreAndHealth : MonoBehaviour
     [SerializeField] private int gaugePoints;
     [SerializeField] private Material hitMaterial;
     [SerializeField] private float hitTime;
+    [SerializeField] private GameObject particleExplosion;
     private SpriteRenderer mySpriteRenderer;
     private Material myMaterial;
 
@@ -28,6 +29,7 @@ public class EnemyScoreAndHealth : MonoBehaviour
         {
             Globals.Score.ChangeScore(scorePoints);
             Globals.HealthGauge.ChangeGaugeValue(gaugePoints);
+            PoolManager.SpawnObject(particleExplosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }

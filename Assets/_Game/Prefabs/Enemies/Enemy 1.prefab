@@ -176,3 +176,4 @@ MonoBehaviour:
   gaugePoints: 1
   hitMaterial: {fileID: 2100000, guid: 564e837b79c309546b9ba5ecc628277f, type: 2}
   hitTime: 0.1
+  particleExplosion: {fileID: 5989682733486202439, guid: 347a9d6470e42254bb8cf29a77c0d14c, type: 3}

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Enemy2Projectile : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class Enemy2Projectile : MonoBehaviour
     void Start()
     {
         myTransform = transform;
+        StartCoroutine(CheckDistance());
     }
 
     void Update()
@@ -22,6 +24,17 @@ public class Enemy2Projectile : MonoBehaviour
         {
             other.GetComponent<Player>().Damage(damage);
             Destroy(gameObject);
+        }
+    }
+
+    public IEnumerator CheckDistance()
+    {
+        while(true)
+        {
+            if(myTransform.position.magnitude >= 10.0f)
+            {
+                PoolManager.ReleaseObject(gameObject);
+            }
         }
     }
 }

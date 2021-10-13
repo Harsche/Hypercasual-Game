@@ -230,7 +230,7 @@ Transform:
   m_LocalScale: {x: 0.98724264, y: 0.25839636, z: 0.89877}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 16
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &159593197
 GameObject:
@@ -558,7 +558,7 @@ Transform:
   - {fileID: 1384429330}
   - {fileID: 1499146775}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &361756423
 MonoBehaviour:
@@ -685,7 +685,7 @@ Transform:
   m_Children:
   - {fileID: 1338359096}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &454350818
 GameObject:
@@ -820,8 +820,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_NoiseProfile: {fileID: 11400000, guid: 69ce8388f6785dd4c8c39915efece2f4, type: 2}
   m_PivotOffset: {x: 0, y: 0, z: 0}
-  m_AmplitudeGain: 1
-  m_FrequencyGain: 5
+  m_AmplitudeGain: 0
+  m_FrequencyGain: 1.17
   mNoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &508074891
 GameObject:
@@ -1002,7 +1002,7 @@ Transform:
   m_Children:
   - {fileID: 1369140127}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &519420034
 MonoBehaviour:
@@ -2807,7 +2807,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &615144711
 GameObject:
@@ -2889,7 +2889,7 @@ Transform:
   m_LocalScale: {x: 13.792824, y: 24.309853, z: 13.792824}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &822178772
 PrefabInstance:
@@ -3167,7 +3167,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &944310763 stripped
 Transform:
@@ -3252,7 +3252,7 @@ Transform:
   m_Children:
   - {fileID: 491447660}
   m_Father: {fileID: 0}
-  m_RootOrder: 17
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1035636996
 GameObject:
@@ -3420,7 +3420,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1169114304
 GameObject:
@@ -3581,7 +3581,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1286438401
 GameObject:
@@ -3836,7 +3836,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1369140127}
   - component: {fileID: 1369140129}
-  - component: {fileID: 1369140128}
   m_Layer: 7
   m_Name: Destroy Out Of Screen
   m_TagString: Untagged
@@ -3858,31 +3857,6 @@ Transform:
   m_Father: {fileID: 519420032}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!68 &1369140128
-EdgeCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369140126}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_EdgeRadius: 0
-  m_Points:
-  - {x: -4.025178, y: 6.3316107}
-  - {x: 3.9337044, y: 6.323925}
-  - {x: 3.87982, y: -7.283273}
-  - {x: -4.082119, y: -7.344953}
-  - {x: -4.069897, y: 6.4026165}
-  m_AdjacentStartPoint: {x: 0, y: 0}
-  m_AdjacentEndPoint: {x: 0, y: 0}
-  m_UseAdjacentStartPoint: 0
-  m_UseAdjacentEndPoint: 0
 --- !u!114 &1369140129
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3955,7 +3929,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1394824174}
   - component: {fileID: 1394824175}
-  - component: {fileID: 1394824176}
   m_Layer: 0
   m_Name: Edge Collider
   m_TagString: Untagged
@@ -3975,7 +3948,7 @@ Transform:
   m_LocalScale: {x: 0.8635, y: 0.8635, z: 0.8635}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!68 &1394824175
 EdgeCollider2D:
@@ -4002,27 +3975,6 @@ EdgeCollider2D:
   m_AdjacentEndPoint: {x: 0, y: 0}
   m_UseAdjacentStartPoint: 0
   m_UseAdjacentEndPoint: 0
---- !u!50 &1394824176
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1394824173}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1437338043
 GameObject:
   m_ObjectHideFlags: 0
@@ -9183,6 +9135,9 @@ MonoBehaviour:
   shakeStrength: 30
   shakeVibrato: 40
   shakeRandomness: 40
+  cinemachineVirtualCamera: {fileID: 952357235}
+  camShakeAmplitude: 2.19
+  camShakeDuration: 1
 --- !u!114 &1604810424
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9295,7 +9250,7 @@ RectTransform:
   - {fileID: 1604810420}
   - {fileID: 1286438402}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -9409,7 +9364,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1820625137
 GameObject:
@@ -9440,7 +9395,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1820625139
 MonoBehaviour:
@@ -9671,7 +9626,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1987540630
 PrefabInstance:
