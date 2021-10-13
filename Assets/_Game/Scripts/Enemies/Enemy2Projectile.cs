@@ -10,7 +10,7 @@ public class Enemy2Projectile : MonoBehaviour
     void Start()
     {
         myTransform = transform;
-        StartCoroutine(CheckDistance());
+        //StartCoroutine(CheckDistance());
     }
 
     void Update()
@@ -35,6 +35,7 @@ public class Enemy2Projectile : MonoBehaviour
             {
                 PoolManager.ReleaseObject(gameObject);
             }
+            yield return new WaitForSeconds(1.0f);
         }
     }
 }

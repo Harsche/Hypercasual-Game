@@ -43,9 +43,9 @@ public class Enemy2 : MonoBehaviour
     {
         while (true)
         {
-            GameObject shoot1 = Instantiate(projectile);
-            GameObject shoot2 = Instantiate(projectile);
-            GameObject shoot3 = Instantiate(projectile);
+            GameObject shoot1 = PoolManager.SpawnObject(projectile);
+            GameObject shoot2 = PoolManager.SpawnObject(projectile);
+            GameObject shoot3 = PoolManager.SpawnObject(projectile);
             shoot1.transform.position = shooter.transform.position;
             shoot2.transform.position = shooter.transform.position;
             shoot3.transform.position = shooter.transform.position;

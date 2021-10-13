@@ -40,7 +40,7 @@ public class Enemy1 : MonoBehaviour
     IEnumerator Shoot(float duration)
     {
         yield return new WaitForSeconds(duration/2);
-        Instantiate(projectile, transform.GetChild(0).position, Quaternion.identity);
+        PoolManager.SpawnObject(projectile, transform.GetChild(0).position, Quaternion.identity);
     }
 
     private Vector2 RandomPosition()

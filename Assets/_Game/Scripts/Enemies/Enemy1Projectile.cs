@@ -36,6 +36,7 @@ public class Enemy1Projectile : MonoBehaviour
             {
                 PoolManager.ReleaseObject(gameObject);
             }
+            yield return new WaitForSeconds(1.0f);
         }
     }
 }
