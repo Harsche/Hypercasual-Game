@@ -8,8 +8,6 @@ public class Shooter : MonoBehaviour
     [SerializeField] private float projectileSpeed;
     [SerializeField] private float tapThreshold;
     [SerializeField] private GameObject redBall;
-    [SerializeField] private GameObject greenBall;
-    [SerializeField] private GameObject blueBall;
     [SerializeField] private ParticleSystem shooterParticles;
     private Coroutine shooting;
     private Transform myTransform;

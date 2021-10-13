@@ -419,7 +419,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6409005817385111718, guid: 52e717e0563523342b43d6d7ef222f70, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6409005817385111719, guid: 52e717e0563523342b43d6d7ef222f70, type: 3}
       propertyPath: m_RootOrder
@@ -624,7 +624,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6e6768174602c845ba69b72f3b38fc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  invincible: 0
+  invincible: 1
   playerHealth: 0
   startHealth: 2
   maxHealth: 5
@@ -999,8 +999,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1369140127}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2904,7 +2903,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6409005817385111718, guid: 52e717e0563523342b43d6d7ef222f70, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6409005817385111719, guid: 52e717e0563523342b43d6d7ef222f70, type: 3}
       propertyPath: m_RootOrder
@@ -3826,49 +3825,6 @@ MonoBehaviour:
   onWorldFromTo:
     m_PersistentCalls:
       m_Calls: []
---- !u!1 &1369140126
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1369140127}
-  - component: {fileID: 1369140129}
-  m_Layer: 7
-  m_Name: Destroy Out Of Screen
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1369140127
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369140126}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.76, z: 10}
-  m_LocalScale: {x: 1.3426, y: 1.3426, z: 1.3426}
-  m_Children: []
-  m_Father: {fileID: 519420032}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1369140129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1369140126}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bd8db22b942f214a980ec2a7aa2fcdf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1384429329
 GameObject:
   m_ObjectHideFlags: 0
@@ -3914,10 +3870,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shootFrequency: 4
   projectileSpeed: 8
-  tapThreshold: 0.3
+  tapThreshold: 0.2
   redBall: {fileID: 5749653139576914063, guid: a9fbe5bbbacb5c740b77bf758df20761, type: 3}
-  greenBall: {fileID: 0}
-  blueBall: {fileID: 0}
   shooterParticles: {fileID: 1499146774}
 --- !u!1 &1394824173
 GameObject:
@@ -4237,7 +4191,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0
+    scalar: 0.05
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -4297,7 +4251,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.5
+      scalar: 0.3
       minScalar: 0.2
       maxCurve:
         serializedVersion: 2
@@ -4403,7 +4357,7 @@ ParticleSystem:
     startColor:
       serializedVersion: 2
       minMaxState: 2
-      minColor: {r: 0.5849056, g: 0, b: 0, a: 1}
+      minColor: {r: 0.6, g: 0, b: 0, a: 1}
       maxColor: {r: 1, g: 0, b: 0, a: 1}
       maxGradient:
         serializedVersion: 2
@@ -9413,6 +9367,7 @@ MonoBehaviour:
   healthGauge: {fileID: 1148910650}
   player: {fileID: 361756426}
   mainCamera: {fileID: 519420028}
+  shootParticles: {fileID: 1499146774}
 --- !u!1 &1933593410
 GameObject:
   m_ObjectHideFlags: 0
@@ -9661,7 +9616,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6409005817385111718, guid: 52e717e0563523342b43d6d7ef222f70, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6409005817385111719, guid: 52e717e0563523342b43d6d7ef222f70, type: 3}
       propertyPath: m_RootOrder
@@ -10065,7 +10020,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6409005817385111718, guid: 52e717e0563523342b43d6d7ef222f70, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6409005817385111719, guid: 52e717e0563523342b43d6d7ef222f70, type: 3}
       propertyPath: m_RootOrder

@@ -7,10 +7,14 @@ public class Enemy2Projectile : MonoBehaviour
     [SerializeField] private float speed;
     private Transform myTransform;
 
-    void Start()
+    void Awake()
     {
         myTransform = transform;
-        //StartCoroutine(CheckDistance());
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(CheckDistance());
     }
 
     void Update()
@@ -20,7 +24,7 @@ public class Enemy2Projectile : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if(other.CompareTag("Player"))
+        if (other.CompareTag("Player"))
         {
             other.GetComponent<Player>().Damage(damage);
             Destroy(gameObject);
@@ -29,9 +33,9 @@ public class Enemy2Projectile : MonoBehaviour
 
     public IEnumerator CheckDistance()
     {
-        while(true)
+        while (true)
         {
-            if(myTransform.position.magnitude >= 10.0f)
+            if (myTransform.position.magnitude >= 7.0f)
             {
                 PoolManager.ReleaseObject(gameObject);
             }
