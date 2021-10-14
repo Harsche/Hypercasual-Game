@@ -13,6 +13,7 @@ public class Enemy2 : MonoBehaviour
     [SerializeField] private GameObject projectile;
     private Coroutine shootCoroutine;
     private GameObject shooter;
+    private Tween path;
 
     void Start()
     {
@@ -25,7 +26,7 @@ public class Enemy2 : MonoBehaviour
 
             float duration = Vector2.Distance(transform.position, v3path[0]) / speed;
 
-            Tween path = transform.DOPath(v3path, duration, PathType.Linear, PathMode.TopDown2D);
+            path = transform.DOPath(v3path, duration, PathType.Linear, PathMode.TopDown2D);
             path.OnComplete(() => { shootCoroutine = StartCoroutine(Shoot()); });
             path.SetLink(gameObject);
         }
@@ -37,6 +38,10 @@ public class Enemy2 : MonoBehaviour
         {
             StopCoroutine(shootCoroutine);
         }
+    }
+
+    private void OnDisable() {
+        path.Kill();
     }
 
     IEnumerator Shoot()

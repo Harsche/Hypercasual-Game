@@ -3,7 +3,6 @@ using Lean.Touch;
 
 public class Movement : MonoBehaviour
 {
-
     [SerializeField] private float characterSpeed;
     [SerializeField] private float tapThreshold;
     private Camera mainCamera;

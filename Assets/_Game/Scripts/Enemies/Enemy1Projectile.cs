@@ -12,6 +12,7 @@ public class Enemy1Projectile : MonoBehaviour
         myTransform = transform;
         direction = Globals.Player.transform.position - myTransform.position;
         direction.Normalize();
+        DontDestroyOnLoad(gameObject);
     }
 
     private void OnEnable()

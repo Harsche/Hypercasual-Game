@@ -10,6 +10,7 @@ public class Enemy2Projectile : MonoBehaviour
     void Awake()
     {
         myTransform = transform;
+        DontDestroyOnLoad(gameObject);
     }
 
     private void OnEnable()

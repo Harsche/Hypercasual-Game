@@ -16,6 +16,7 @@ public class Score : MonoBehaviour
     [SerializeField] CinemachineVirtualCamera cinemachineVirtualCamera;
     [SerializeField] float camShakeAmplitude;
     [SerializeField] float camShakeDuration;
+    private Vector2 startPos;
     private CinemachineBasicMultiChannelPerlin shake;
     private bool gameOver;
     private Text scoreText;
@@ -23,6 +24,7 @@ public class Score : MonoBehaviour
 
     void Awake()
     {
+        startPos = transform.position;
         shake = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         shake.m_AmplitudeGain = 0f;
         scoreText = GetComponent<Text>();
@@ -63,5 +65,11 @@ public class Score : MonoBehaviour
     public void SetGameOver()
     {
         gameOver = true;
+    }
+
+    public void StartTweenFrom()
+    {
+        startPos += new Vector2(+transform.parent.GetComponent<RectTransform>().rect.width / 2, transform.parent.GetComponent<RectTransform>().rect.height / 2);;
+        myRectTransform.DOLocalMove(startPos, moveDuration);
     }
 }

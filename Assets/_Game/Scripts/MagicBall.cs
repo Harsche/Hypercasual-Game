@@ -13,6 +13,7 @@ public class MagicBall : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         mySpriteRenderer = GetComponent<SpriteRenderer>();
         myTransform = transform;
         possibleColors[0] = Color.blue;
