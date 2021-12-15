@@ -1,5 +1,12 @@
 {
   "dependencies": {
+    "com.fluid.unique-id": {
+      "version": "1.0.1",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://registry.npmjs.org"
+    },
     "com.unity.2d.animation": {
       "version": "5.0.7",
       "depth": 0,
@@ -139,6 +146,32 @@
       },
       "url": "https://packages.unity.com"
     },
+    "com.unity.render-pipelines.core": {
+      "version": "10.6.0",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.ugui": "1.0.0"
+      },
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.searcher": {
+      "version": "4.3.2",
+      "depth": 1,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://packages.unity.com"
+    },
+    "com.unity.shadergraph": {
+      "version": "10.6.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.unity.render-pipelines.core": "10.6.0",
+        "com.unity.searcher": "4.3.2"
+      },
+      "url": "https://packages.unity.com"
+    },
     "com.unity.test-framework": {
       "version": "1.1.29",
       "depth": 0,
@@ -179,6 +212,20 @@
         "com.unity.modules.ui": "1.0.0",
         "com.unity.modules.imgui": "1.0.0"
       }
+    },
+    "jillejr.newtonsoft.json-for-unity": {
+      "version": "13.0.102",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://npm.cloudsmith.io/jillejr/newtonsoft-json-for-unity"
+    },
+    "jillejr.newtonsoft.json-for-unity.converters": {
+      "version": "https://github.com/jilleJr/Newtonsoft.Json-for-Unity.Converters.git#1.3.0",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {},
+      "hash": "0355a4fdb274ed8ccad7b00d594496ab9bd29e6a"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
