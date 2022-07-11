@@ -7,11 +7,10 @@ public class Enemy1Projectile : MonoBehaviour
     [SerializeField] private int damage;
     private Transform myTransform;
     private Vector2 direction;
+
     void Awake()
     {
         myTransform = transform;
-        direction = Globals.Player.transform.position - myTransform.position;
-        direction.Normalize();
         DontDestroyOnLoad(gameObject);
     }
 
@@ -22,7 +21,7 @@ public class Enemy1Projectile : MonoBehaviour
 
     void Update()
     {
-        myTransform.Translate(direction * speed * Time.deltaTime);
+        myTransform.Translate(Vector2.right * speed * Time.deltaTime);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
